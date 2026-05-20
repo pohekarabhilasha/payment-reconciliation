@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: payment-reconciliation
+
+  # Default profile: H2 in-memory. No Docker needed to run locally.
+  datasource:
+    url: jdbc:h2:mem:payments;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update          # auto-creates tables from @Entity classes during dev
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  h2:
+    console:
+      enabled: true              # browse the DB at http://localhost:8080/h2-console
+      path: /h2-console
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+
+---
+# Postgres profile, activated later with: --spring.profiles.active=postgres
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payments
+    driver-class-name: org.postgresql.Driver
+    username: payments
+    password: payments
+  jpa:
+    hibernate:
+      ddl-auto: validate         # in prod we'll use Flyway/Liquibase, not auto-DDL

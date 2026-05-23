@@ -1,6 +1,6 @@
 # Payment Processing & Reconciliation Service
 
-> A production-style payment backend that processes charges through a mock gateway, maintains a double-entry ledger, reconciles internal records against settlement reports, and uses an LLM to explain discrepancies in plain English for the operations team.
+- A production-style payment backend that processes charges through a mock gateway, maintains a double-entry ledger, reconciles internal records against settlement reports, and uses an LLM to explain discrepancies in plain English for the operations team.
 
 ![Java](https://img.shields.io/badge/Java-17-007396?logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-6DB33F?logo=springboot&logoColor=white)
